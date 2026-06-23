@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+
+jobs:
+  build:
+    uses: powsybl/github-ci/.github/workflows/build-base-docker-image-generic.yml@c49157c2139394b2ecfde6d99c827ac39d014070
+    with:
+      dockerImage: gridsuite/httpd
+      dockerUsername: gridsuiteci
+      dockerRoUsername: rogridsuiteci
+      eventOrganizations: gridsuite
+      eventType: httpd_updated
+    secrets:
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      docker-ro-token: ${{ secrets.DOCKERHUB_RO_TOKEN }}
+      repo-token: ${{ secrets.REPO_ACCESS_TOKEN }}
