@@ -11,7 +11,7 @@ jobs:
   run-patch:
     uses: powsybl/github-ci/.github/workflows/patch-base-docker-image-generic.yml@c49157c2139394b2ecfde6d99c827ac39d014070
     with:
-      githubappId: ${{ vars.POWSYBL_ACTIONS_APPID }}
+      githubappId: ${{ vars.GRIDSUITE_ACTIONS_APPID }}
       dockerImage: gridsuite/httpd
       dockerUsername: gridsuiteci
       releaseVersion: ${{ github.event.inputs.releaseVersion }}
