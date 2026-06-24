@@ -8,7 +8,7 @@ RUN { \
     echo 'ServerTokens Prod'; \
 \
     # allow to inject just our conf, not replace the whole httpd.conf \
-    echo 'Include "/usr/local/apache2/conf/app-httpd.conf"'; \
+    echo 'IncludeOptional "/usr/local/apache2/conf/app-httpd.conf"'; \
 } >> /usr/local/apache2/conf/httpd.conf
 
 # The SPA apps need sed at runtime, copy it here in this image
