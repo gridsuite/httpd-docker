@@ -11,3 +11,10 @@ RUN { \
     echo 'Include "/usr/local/apache2/conf/app-httpd.conf"'; \
 } >> /usr/local/apache2/conf/httpd.conf
 
+# The SPA apps need sed at runtime, copy it here in this image
+# It will be unused for non-spa (e.g. apps-metadata, default-backend)
+# but this allows to have only one httpd image
+# When copying sed hopefully we don't need any extra shared libraries
+# NOTE: we use it at runtime, and also in the SPA Dockerfiles during SPAs image
+# build so we should see easily that it works.
+COPY --from=dev /bin/sed /bin/sed
